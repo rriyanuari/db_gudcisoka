@@ -12,15 +12,8 @@ class JenisBarang extends CI_Controller {
 	public function index()
 	{
     $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
-
+    
 		$this->load->view('dashboard', $data);
-  }
-
-  public function view($slug = NULL)
-	{
-    $data['news_item']   = $this->news_model->get_news($slug);
-
-		$this->load->view('news/view', $data);
   }
 
 }

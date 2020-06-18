@@ -15,9 +15,14 @@ class Model_jenisBarang extends CI_Model{
     return $query->row_array();
   }
 
-  public function get_jenisBarang_id($id = FALSE){
-    $query = $this->db->get_where('news', array('id' => $id));
-    return $query->row_array();
-  }
+  public function set_jenisBarang(){
+    $data = array( 
+      'nama_jenisBarang'    => $this->input->post('title'),
+      'tag_jenisBarang'     => $this->input->post('text'),
+      'satuan_jenisBarang'  => $this->input->post(''),
+      'nominal_jenisBarang' => $this->input->post('')
+    );
 
+    return $this->db->insert('news', $data);
+  }
 }
