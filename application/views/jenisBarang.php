@@ -70,20 +70,20 @@
                       </div>
                       <div class="form-group col-md-4">
                         <label>Jenis</label>
-                        <select class="form-control">
-                          <option>-</option>
-                          <option>Tyfo</option>
-                          <option>Epoxy</option>
+                        <select name="tag_jenisBarang" class="form-control">
+                          <option value="">-</option>
+                          <option value="tyfo">Tyfo</option>
+                          <option value="epoxy">Epoxy</option>
                         </select>
                       </div>
                       <div class="form-group col-md-4">
                         <label>Satuan</label>
-                        <select class="form-control">
-                          <option>-</option>
-                          <option>Roll</option>
-                          <option>Pail</option>
-                          <option>Pcs</option>
-                          <option>Bag</option>
+                        <select name="satuan_jenisBarang" class="form-control">
+                          <option value="">-</option>
+                          <option value="roll">Roll</option>
+                          <option value="pail">Pail</option>
+                          <option value="pcs">Pcs</option>
+                          <option value="bag">Bag</option>
                         </select>
                       </div>
                       <div class="form-group col-md-4">
@@ -233,48 +233,7 @@
   });
 </script>
 <script type="text/javascript">
-$(document).ready(function () {
-  $.validator.setDefaults({
-    submitHandler: function () {
-      alert( "Form successful submitted!" );
-    }
-  });
-  $('#quickForm').validate({
-    rules: {
-      nama_jenisBarang: {
-        required: true,
-      },
-      password: {
-        required: true,
-        minlength: 5
-      },
-      terms: {
-        required: true
-      },
-    },
-    messages: {
-      nama_jenisBarang: {
-        required: "Please enter a email address",
-      },
-      password: {
-        required: "Please provide a password",
-        minlength: "Your password must be at least 5 characters long"
-      },
-      terms: "Please accept our terms"
-    },
-    errorElement: 'span',
-    errorPlacement: function (error, element) {
-      error.addClass('invalid-feedback');
-      element.closest('.form-group').append(error);
-    },
-    highlight: function (element, errorClass, validClass) {
-      $(element).addClass('is-invalid');
-    },
-    unhighlight: function (element, errorClass, validClass) {
-      $(element).removeClass('is-invalid');
-    }
-  });
-});
+
 </script>
 
 

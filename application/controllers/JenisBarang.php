@@ -11,9 +11,13 @@ class JenisBarang extends CI_Controller {
 
 	public function index()
 	{
+    $this->load->helper('form');
+    $this->load->library('form_validation');
+
     $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
-    
-		$this->load->view('dashboard', $data);
+  
+      $this->model_jenisBarang->set_jenisBarang();
+      $this->load->view('jenisBarang', $data);
   }
 
 }

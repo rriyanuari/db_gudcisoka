@@ -17,12 +17,12 @@ class Model_jenisBarang extends CI_Model{
 
   public function set_jenisBarang(){
     $data = array( 
-      'nama_jenisBarang'    => $this->input->post('title'),
-      'tag_jenisBarang'     => $this->input->post('text'),
-      'satuan_jenisBarang'  => $this->input->post(''),
-      'nominal_jenisBarang' => $this->input->post('')
+      'nama_jenisBarang'    => $this->input->post('nama_jenisBarang'),
+      'tag_jenisBarang'     => $this->input->post('tag_jenisBarang'),
+      'satuan_jenisBarang'  => $this->input->post('satuan_jenisBarang'),
+      'nominal_jenisBarang' => $this->input->post('nominal_jenisBarang')
     );
 
-    return $this->db->insert('news', $data);
+    return $this->db->insert('tbl_jenisBarang', $data);
   }
 }
