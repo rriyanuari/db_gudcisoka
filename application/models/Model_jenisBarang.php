@@ -25,4 +25,8 @@ class Model_jenisBarang extends CI_Model{
 
     return $this->db->insert('tbl_jenisBarang', $data);
   }
+
+  public function delete_jenisBarang($id){
+    return $this->db->delete('tbl_jenisBarang', array('id_jenisBarang'=>$id));
+  }
 }

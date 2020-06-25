@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dashboard</title>
+  <title>DB-Gudcisoka</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,11 +37,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dashboard</h1>
+            <h1>Data Barang Masuk</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Data Barang Masuk</li>
             </ol>
           </div>
         </div>
@@ -61,46 +61,43 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" id="quickForm">
-                  <div class="card-body row">
-                    <div class="form-group col-md-12">
-                      <label for="nama_jenisBarang">Nama Barang</label>
-                      <input type="text" name="nama_jenisBarang" class="form-control" id="nama_jenisBarang" placeholder="Isi Nama Barang">
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label>Jenis</label>
-                      <select class="form-control">
-                        <option>-</option>
-                        <option>Tyfo</option>
-                        <option>Epoxy</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label>Satuan</label>
-                      <select class="form-control">
-                        <option>-</option>
-                        <option>Roll</option>
-                        <option>Pail</option>
-                        <option>Pcs</option>
-                        <option>Bag</option>
-                      </select>
-                    </div>
-                    <div class="form-group col-md-4">
-                      <label for="nominal_jenisBarang">Nominal Barang</label>
-                      <input type="number" name="nominal_jenisBarang" class="form-control" id="nominal_jenisBarang" placeholder="Isi Nominal Barang">
-                    </div>
-                    <div class="form-group col-md-12 mb-0">
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                        <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
+                <?= validation_errors() ?>
+                <?= form_open('jenis-barang'); ?>
+                  <form role="form" id="quickForm">
+                    <div class="card-body row">
+                      <div class="form-group col-md-12">
+                        <label for="nama_jenisBarang">Nama Barang</label>
+                        <input type="text" name="nama_jenisBarang" class="form-control" id="nama_jenisBarang" placeholder="Isi Nama Barang">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label>Jenis</label>
+                        <select name="tag_jenisBarang" class="form-control">
+                          <option value="">-</option>
+                          <option value="tyfo">Tyfo</option>
+                          <option value="epoxy">Epoxy</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label>Satuan</label>
+                        <select name="satuan_jenisBarang" class="form-control">
+                          <option value="">-</option>
+                          <option value="roll">Roll</option>
+                          <option value="pail">Pail</option>
+                          <option value="pcs">Pcs</option>
+                          <option value="bag">Bag</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="nominal_jenisBarang">Nominal Barang</label>
+                        <input type="number" name="nominal_jenisBarang" class="form-control" id="nominal_jenisBarang" placeholder="Isi Nominal Barang">
                       </div>
                     </div>
-                  </div>
-                  <!-- /.card-body -->
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-                </form>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                  </form>
+                <?= form_close(); ?>
               </div>
               <!-- /.card -->
             </div>
@@ -117,7 +114,7 @@
             <div class="col-12">
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Tabel Data Jenis Barang</h3>
+                  <h3 class="card-title">Tabel Data Barang Masuk</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -126,9 +123,9 @@
                       <tr>
                         <th>No</th>
                         <th>Nama Barang/Material</th>
-                        <th>Jenis</th>
                         <th>Satuan</th>
-                        <th>Nominal</th>
+                        <th>Qty</th>
+                        <th>Tanggal Kadaluarsa</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -137,29 +134,25 @@
                       $no = 0;
                       $satuanNominal = "";
                       foreach ($jenisBarang as $jenisBarangSatuan):
-                        if($jenisBarangSatuan['satuan_jenisBarang'] = "roll"){
+                        if($jenisBarangSatuan['satuan_jenisBarang'] == "roll"){
                           $satuanNominal = "Meter";
-                        }elseif($jenisBarangSatuan['satuan_jenisBarang'] = "pail"){
+                      }elseif($jenisBarangSatuan['satuan_jenisBarang'] == "pail" || "Bag"){
                           $satuanNominal = "Kg";
                         }
                       $no++;
                       ?>
                       <tr>
                         <td width="5%"><?= $no ?></td>
-                        <td width="35%"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></td>
+                        <td width="40%"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></td>
                         <td width="15%"><?= $jenisBarangSatuan['tag_jenisBarang'] ?></td>
                         <td width="15%"><?= $jenisBarangSatuan['satuan_jenisBarang'] ?></td>
                         <td width="15%"><?= $jenisBarangSatuan['nominal_jenisBarang']." ".$satuanNominal ?></td>
-                        <td width="15%" class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="#">
-                                <i class="fas fa-folder">
-                                </i>
-                            </a>
+                        <td width="10%" class="project-actions text-right">
                             <a class="btn btn-info btn-sm" href="#">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                             </a>
-                            <a class="btn btn-danger btn-sm" href="#">
+                            <a class="btn btn-danger btn-sm" href="<?= site_url('jenis-barang/delete/'.$jenisBarangSatuan['id_jenisBarang']) ?>">
                                 <i class="fas fa-trash">
                                 </i>
                             </a>
@@ -167,16 +160,6 @@
                       </tr>
                     <?php endforeach ?>
                     </tbody>
-                    <!-- <tfoot>
-                      <tr>
-                        <th>No</th>
-                        <th>Nama Barang/Material</th>
-                        <th>Jenis</th>
-                        <th>Satuan</th>
-                        <th>Nominal</th>
-                        <th>Action</th>
-                      </tr>
-                    </tfoot> -->
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -231,48 +214,7 @@
   });
 </script>
 <script type="text/javascript">
-$(document).ready(function () {
-  $.validator.setDefaults({
-    submitHandler: function () {
-      alert( "Form successful submitted!" );
-    }
-  });
-  $('#quickForm').validate({
-    rules: {
-      nama_jenisBarang: {
-        required: true,
-      },
-      password: {
-        required: true,
-        minlength: 5
-      },
-      terms: {
-        required: true
-      },
-    },
-    messages: {
-      nama_jenisBarang: {
-        required: "Please enter a email address",
-      },
-      password: {
-        required: "Please provide a password",
-        minlength: "Your password must be at least 5 characters long"
-      },
-      terms: "Please accept our terms"
-    },
-    errorElement: 'span',
-    errorPlacement: function (error, element) {
-      error.addClass('invalid-feedback');
-      element.closest('.form-group').append(error);
-    },
-    highlight: function (element, errorClass, validClass) {
-      $(element).addClass('is-invalid');
-    },
-    unhighlight: function (element, errorClass, validClass) {
-      $(element).removeClass('is-invalid');
-    }
-  });
-});
+
 </script>
 
 

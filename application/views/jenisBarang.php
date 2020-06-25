@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dashboard</title>
+  <title>Jenis Barang</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,11 +37,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dashboard</h1>
+            <h1>Jenis Barang</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">Dashboard</li>
+              <li class="breadcrumb-item active">Jenis Barang</li>
             </ol>
           </div>
         </div>
@@ -61,6 +61,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
+                <?= validation_errors() ?>
                 <?= form_open('jenis-barang'); ?>
                   <form role="form" id="quickForm">
                     <div class="card-body row">
@@ -89,12 +90,6 @@
                       <div class="form-group col-md-4">
                         <label for="nominal_jenisBarang">Nominal Barang</label>
                         <input type="number" name="nominal_jenisBarang" class="form-control" id="nominal_jenisBarang" placeholder="Isi Nominal Barang">
-                      </div>
-                      <div class="form-group col-md-12 mb-0">
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                          <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
-                        </div>
                       </div>
                     </div>
                     <!-- /.card-body -->
@@ -139,29 +134,25 @@
                       $no = 0;
                       $satuanNominal = "";
                       foreach ($jenisBarang as $jenisBarangSatuan):
-                        if($jenisBarangSatuan['satuan_jenisBarang'] = "roll"){
+                        if($jenisBarangSatuan['satuan_jenisBarang'] == "roll"){
                           $satuanNominal = "Meter";
-                        }elseif($jenisBarangSatuan['satuan_jenisBarang'] = "pail"){
+                      }elseif($jenisBarangSatuan['satuan_jenisBarang'] == "pail" || "Bag"){
                           $satuanNominal = "Kg";
                         }
                       $no++;
                       ?>
                       <tr>
                         <td width="5%"><?= $no ?></td>
-                        <td width="35%"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></td>
+                        <td width="40%"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></td>
                         <td width="15%"><?= $jenisBarangSatuan['tag_jenisBarang'] ?></td>
                         <td width="15%"><?= $jenisBarangSatuan['satuan_jenisBarang'] ?></td>
                         <td width="15%"><?= $jenisBarangSatuan['nominal_jenisBarang']." ".$satuanNominal ?></td>
-                        <td width="15%" class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="#">
-                                <i class="fas fa-folder">
-                                </i>
-                            </a>
+                        <td width="10%" class="project-actions text-right">
                             <a class="btn btn-info btn-sm" href="#">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                             </a>
-                            <a class="btn btn-danger btn-sm" href="#">
+                            <a class="btn btn-danger btn-sm" href="<?= site_url('jenis-barang/delete/'.$jenisBarangSatuan['id_jenisBarang']) ?>">
                                 <i class="fas fa-trash">
                                 </i>
                             </a>
@@ -169,16 +160,6 @@
                       </tr>
                     <?php endforeach ?>
                     </tbody>
-                    <!-- <tfoot>
-                      <tr>
-                        <th>No</th>
-                        <th>Nama Barang/Material</th>
-                        <th>Jenis</th>
-                        <th>Satuan</th>
-                        <th>Nominal</th>
-                        <th>Action</th>
-                      </tr>
-                    </tfoot> -->
                   </table>
                 </div>
                 <!-- /.card-body -->

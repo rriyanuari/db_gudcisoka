@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class JenisBarang extends CI_Controller {
+class Transaksi extends CI_Controller {
 
   public function __construct(){
     parent::__construct();
     $this->load->model('model_jenisBarang');
     $this->load->helper('url_helper');
   }
-
-	public function index()
+  
+  public function in()
 	{
     $this->load->helper('form');
     $this->load->library('form_validation');
@@ -23,14 +23,15 @@ class JenisBarang extends CI_Controller {
 
     if ($this->form_validation->run() == FALSE)
     {
-      $this->load->view('jenisBarang', $data);
+      $this->load->view('barangMasuk', $data);
     }
     else
     {
       $this->model_jenisBarang->set_jenisBarang();
-      redirect('jenisBarang',$data);
+      redirect('barangMasuk',$data);
     }
   }
+
 
   public function delete($id)
   {
