@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>DB-Gudcisoka</title>
+  <title>DB-Gudciska | Barang</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -37,11 +40,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Barang Masuk</h1>
+            <h1>Barang</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">Data Barang Masuk</li>
+              <li class="breadcrumb-item active">Barang</li>
             </ol>
           </div>
         </div>
@@ -50,65 +53,6 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-          <!-- Forms -->
-          <div class="row">
-            <!-- left column -->
-            <div class="col-md-12">
-              <!-- jquery validation -->
-              <div class="card card-primary">
-                <div class="card-header">
-                  <h3 class="card-title">Form Tambah Data Jenis Barang</h3>
-                </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <?= validation_errors() ?>
-                <?= form_open('jenis-barang'); ?>
-                  <form role="form" id="quickForm">
-                    <div class="card-body row">
-                      <div class="form-group col-md-12">
-                        <label for="nama_jenisBarang">Nama Barang</label>
-                        <input type="text" name="nama_jenisBarang" class="form-control" id="nama_jenisBarang" placeholder="Isi Nama Barang">
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label>Jenis</label>
-                        <select name="tag_jenisBarang" class="form-control">
-                          <option value="">-</option>
-                          <option value="tyfo">Tyfo</option>
-                          <option value="epoxy">Epoxy</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label>Satuan</label>
-                        <select name="satuan_jenisBarang" class="form-control">
-                          <option value="">-</option>
-                          <option value="roll">Roll</option>
-                          <option value="pail">Pail</option>
-                          <option value="pcs">Pcs</option>
-                          <option value="bag">Bag</option>
-                        </select>
-                      </div>
-                      <div class="form-group col-md-4">
-                        <label for="nominal_jenisBarang">Nominal Barang</label>
-                        <input type="number" name="nominal_jenisBarang" class="form-control" id="nominal_jenisBarang" placeholder="Isi Nominal Barang">
-                      </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                  </form>
-                <?= form_close(); ?>
-              </div>
-              <!-- /.card -->
-            </div>
-            <!--/.col (left) -->
-            <!-- right column -->
-            <div class="col-md-6">
-            </div>
-            <!--/.col (right) -->
-          </div>
-          <!-- /.Forms -->
-
           <!-- Data Table -->
           <div class="row">
             <div class="col-12">
@@ -125,7 +69,7 @@
                         <th>Nama Barang/Material</th>
                         <th>Satuan</th>
                         <th>Qty</th>
-                        <th>Tanggal Kadaluarsa</th>
+                        <th>Tgl Kadaluarsa</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -133,26 +77,21 @@
                     <?php
                       $no = 0;
                       $satuanNominal = "";
-                      foreach ($jenisBarang as $jenisBarangSatuan):
-                        if($jenisBarangSatuan['satuan_jenisBarang'] == "roll"){
-                          $satuanNominal = "Meter";
-                      }elseif($jenisBarangSatuan['satuan_jenisBarang'] == "pail" || "Bag"){
-                          $satuanNominal = "Kg";
-                        }
-                      $no++;
+                      foreach ($barang as $barangSatuan):
+                        $no++;
                       ?>
                       <tr>
                         <td width="5%"><?= $no ?></td>
-                        <td width="40%"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></td>
-                        <td width="15%"><?= $jenisBarangSatuan['tag_jenisBarang'] ?></td>
-                        <td width="15%"><?= $jenisBarangSatuan['satuan_jenisBarang'] ?></td>
-                        <td width="15%"><?= $jenisBarangSatuan['nominal_jenisBarang']." ".$satuanNominal ?></td>
-                        <td width="10%" class="project-actions text-right">
+                        <td width="40%"><?= $barangSatuan['nama_jenisBarang'] ?></td>
+                        <td width="15%"><?= $barangSatuan['satuan_jenisBarang'] ?></td>
+                        <td width="15%"><?= $barangSatuan['qty_barang'] ?></td>
+                        <td width="10%"><?= $barangSatuan['tgl_kadaluarsaBarang'] ?></td>
+                        <td width="15%" class="project-actions text-right">
                             <a class="btn btn-info btn-sm" href="#">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                             </a>
-                            <a class="btn btn-danger btn-sm" href="<?= site_url('jenis-barang/delete/'.$jenisBarangSatuan['id_jenisBarang']) ?>">
+                            <a class="btn btn-danger btn-sm" href="#">
                                 <i class="fas fa-trash">
                                 </i>
                             </a>
@@ -201,6 +140,8 @@
 <script src="<?php echo base_url() ?>/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url() ?>/assets/plugins/select2/js/select2.full.min.js"></script>
 <!-- jquery-validation -->
 <script src="<?php echo base_url() ?>/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/plugins/jquery-validation/additional-methods.min.js"></script>
@@ -211,12 +152,11 @@
       "responsive": true,
       "autoWidth": false,
     });
+    $('.select2bs4').select2({
+      theme: 'bootstrap4',
+    })
   });
 </script>
-<script type="text/javascript">
-
-</script>
-
 
 </body>
 </html>

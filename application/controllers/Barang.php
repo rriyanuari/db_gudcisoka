@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Transaksi extends CI_Controller {
+class Barang extends CI_Controller {
 
   public function __construct(){
     parent::__construct();
@@ -10,7 +10,7 @@ class Transaksi extends CI_Controller {
     $this->load->helper('url_helper');
   }
   
-  public function formTransaksi()
+  public function index()
 	{
     $this->load->helper('form');
     $this->load->library('form_validation');
@@ -27,12 +27,12 @@ class Transaksi extends CI_Controller {
     if ($this->form_validation->run() == FALSE)
     {
 
-      $this->load->view('formTransaksi', $data);
+      $this->load->view('barang', $data);
     }
     else
     {
       $this->model_jenisBarang->set_jenisBarang();
-      redirect('formTransaksi',$data);
+      redirect('barang',$data);
     }
   }
 

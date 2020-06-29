@@ -13,27 +13,43 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-      <li class="nav-item active">
-          <a href="#" class="nav-link active">
+        <li class="nav-item">
+          <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
             </p>
           </a>
-        </li>
-        <li class="nav-item active">
-          <a href="<?= base_url() ?>jenis-barang" class="nav-link active">
+        </li> 
+        <li class="nav-item">
+          <a href="<?= base_url() ?>jenis-barang" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Jenis Barang
             </p>
           </a>
         </li>
-        <li class="nav-item active">
-          <a href="<?= base_url() ?>barang-masuk" class="nav-link active">
+        <li class="nav-item">
+          <a href="<?= base_url() ?>form-transaksi" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              Barang Masuk
+              Form Transaksi
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= base_url() ?>barang" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Barang
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?= base_url() ?>history" class="nav-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              History
             </p>
           </a>
         </li>
