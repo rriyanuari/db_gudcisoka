@@ -58,7 +58,7 @@
             <div class="col-12">
               <div class="card card-primary">
                 <div class="card-header">
-                  <h3 class="card-title">Tabel Data Barang Masuk</h3>
+                  <h3 class="card-title">Tabel Data Barang</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -87,11 +87,11 @@
                         <td width="15%"><?= $barangSatuan['qty_barang'] ?></td>
                         <td width="10%"><?= $barangSatuan['tgl_kadaluarsaBarang'] ?></td>
                         <td width="15%" class="project-actions text-right">
-                            <a class="btn btn-info btn-sm" href="#">
-                                <i class="fas fa-pencil-alt">
+                            <a class="btn btn-info btn-sm" href="<?= site_url('barang/qr/'.$barangSatuan['id_barang']) ?>">
+                                <i class="fas fa-folder">
                                 </i>
                             </a>
-                            <a class="btn btn-danger btn-sm" href="#">
+                            <a class="btn btn-danger btn-sm" href="<?= site_url('barang/delete/'.$barangSatuan['id_barang']) ?>">
                                 <i class="fas fa-trash">
                                 </i>
                             </a>

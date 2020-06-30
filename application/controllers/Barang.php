@@ -5,8 +5,12 @@ class Barang extends CI_Controller {
 
   public function __construct(){
     parent::__construct();
-    $this->load->model('model_jenisBarang');
-    $this->load->model('model_transaksi');
+    
+    if($this->session->userdata('status') != "login"){
+			redirect(base_url("login"));
+		}
+
+    $this->load->model('model_barang');
     $this->load->helper('url_helper');
   }
   
@@ -15,33 +19,24 @@ class Barang extends CI_Controller {
     $this->load->helper('form');
     $this->load->library('form_validation');
 
-    $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
-    $data['barang']        = $this->model_transaksi->get_jenisBarang_from_barang();
-    
-    $this->form_validation->set_rules('nama_jenisBarang', 'Nama Barang', 'required');
-    $this->form_validation->set_rules('tag_jenisBarang', 'Tag Barang', 'required');
-    $this->form_validation->set_rules('satuan_jenisBarang', 'Satuan Barang', 'required');
-    $this->form_validation->set_rules('nominal_jenisBarang', 'Nominal', 'required');
+    $data['barang'] = $this->model_barang->get_barang();
 
-    // var_dump($data['barang']);
-    if ($this->form_validation->run() == FALSE)
-    {
+    $this->load->view('barang', $data);
+  }
 
-      $this->load->view('barang', $data);
-    }
-    else
-    {
-      $this->model_jenisBarang->set_jenisBarang();
-      redirect('barang',$data);
-    }
+  public function qrcodeGenerate($id)
+  {
+    $data['id'] = $id;
+    $data['barangSatuan']   = $this->model_barang->get_barang_id($id);
+
+    $this->load->view('qrcodeGenerate', $data);
   }
 
 
   public function delete($id)
   {
-    $this->model_jenisBarang->delete_jenisBarang($id);
-    redirect('jenisBarang',$data);
+    $this->model_barang->delete_barang($id);
+    redirect('barang');
   }
-
 
 }

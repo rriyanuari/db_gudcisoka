@@ -70,37 +70,22 @@
                       <th>Qty</th>
                       <th>Date</th>
                       <th>Status</th>
-                      <th>Action</th>
+                      <th>Keterangan</th>
                     </tr>
                   </thead>
                   <tbody>
                   <?php
                     $no = 0;
-                    $satuanNominal = "";
-                    foreach ($jenisBarang as $jenisBarangSatuan):
-                      if($jenisBarangSatuan['satuan_jenisBarang'] == "roll"){
-                        $satuanNominal = "Meter";
-                    }elseif($jenisBarangSatuan['satuan_jenisBarang'] == "pail" || "Bag"){
-                        $satuanNominal = "Kg";
-                      }
+                    foreach ($history as $historySatuan):
                     $no++;
                     ?>
                     <tr>
                       <td width="5%"><?= $no ?></td>
-                      <td width="40%"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></td>
-                      <td width="15%"><?= $jenisBarangSatuan['tag_jenisBarang'] ?></td>
-                      <td width="15%"><?= $jenisBarangSatuan['satuan_jenisBarang'] ?></td>
-                      <td width="15%"><?= $jenisBarangSatuan['nominal_jenisBarang']." ".$satuanNominal ?></td>
-                      <td width="10%" class="project-actions text-right">
-                          <a class="btn btn-info btn-sm" href="#">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                          </a>
-                          <a class="btn btn-danger btn-sm" href="<?= site_url('jenis-barang/delete/'.$jenisBarangSatuan['id_jenisBarang']) ?>">
-                              <i class="fas fa-trash">
-                              </i>
-                          </a>
-                      </td>
+                      <td width="40%"><?= $historySatuan['nama_jenisBarang'] ?></td>
+                      <td width="10%"><?= $historySatuan['qty_barang'] ?></td>
+                      <td width="15%"><?= $historySatuan['tgl_historyBarang'] ?></td>
+                      <td width="10%"><?= $historySatuan['status'] ?></td>
+                      <td width="20%"><?= $historySatuan['keterangan'] ?></td>
                     </tr>
                   <?php endforeach ?>
                   </tbody>

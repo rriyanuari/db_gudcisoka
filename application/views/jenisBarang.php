@@ -53,7 +53,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Forms Barang Masuk -->
+        <!-- Form Jenis Barang -->
         <div class="row">
           <div class="col-md-12">
             <div class="card card-primary collapsed-card">
@@ -110,7 +110,7 @@
             <!-- /.card -->
           </div>
         </div>
-        <!-- /.Forms Barang Masuk -->
+        <!-- /.Forms Jenis Barang -->
 
         <!-- Data Table -->
         <div class="row">

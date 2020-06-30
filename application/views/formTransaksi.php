@@ -44,11 +44,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Barang Masuk</h1>
+            <h1>Form Transaksi</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item active">Data Barang Masuk</li>
+              <li class="breadcrumb-item active">Form Transaksi</li>
             </ol>
           </div>
         </div>
@@ -74,7 +74,7 @@
                 <!-- card body -->
                 <div class="card-body">
                   <?= validation_errors() ?>
-                  <?= form_open('jenis-barang'); ?>
+                  <?= form_open('form-transaksi/barangMasuk'); ?>
                   <form role="form" id="quickForm" style="width:100%;">
                     <div class="row">
                       <div class="form-group col-md-12">
@@ -82,7 +82,7 @@
                           <select name="namaBarang" class="form-control select2bs4" style="width:100%;">
                             <option selcted="selected" value="">Nama Barang...</option>
                             <?php foreach ($jenisBarang as $jenisBarangSatuan): ?>
-                              <option value="<?= $jenisBarangSatuan['nama_jenisBarang'] ?>"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></option>
+                              <option value="<?= $jenisBarangSatuan['id_jenisBarang'] ?>"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></option>
                             <?php endforeach ?>
                           </select>
                       </div>
@@ -92,9 +92,9 @@
                         <input type="number" name="qty_barang" class="form-control" id="qty_barang" placeholder="Isi Quantity Barang...">
                       </div>
                       <div class="form-group col-md-6">
-                        <label>Date:</label>
+                        <label>Tanggal kadaluarsa:</label>
                         <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                          <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
+                          <input type="text" name="tgl_kadaluarsa" class="form-control datetimepicker-input" data-target="#reservationdate"/>
                           <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                           </div>
@@ -278,7 +278,8 @@
     });
     //Date range picker
     $('#reservationdate').datetimepicker({
-      format: 'L'
+      // format: 'L'`
+      format: 'YYYY-MM-DD'
     });
   });
 </script>
