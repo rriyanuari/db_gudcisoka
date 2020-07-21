@@ -19,6 +19,11 @@ class Model_barang extends CI_Model{
     return $query->row_array();
   }
 
+  public function get_barang_id_jenisBarang($id_jenisBarang = FALSE){
+    $query = $this->db->get_where('page_barang', array('id_jenisBarang' => $id_jenisBarang));
+    return $query->result_array();
+  }
+
   public function get_barang_last(){
     $this->db->select('*');
     $this->db->from('tbl_barang');
@@ -29,8 +34,6 @@ class Model_barang extends CI_Model{
 
     return $query->row_array();
   }
-
-
 
   public function set_barang(){
     $data = array( 
@@ -45,6 +48,4 @@ class Model_barang extends CI_Model{
   public function delete_barang($id){
     return $this->db->delete('tbl_barang', array('id_barang'=>$id));
   }
-
-
 }

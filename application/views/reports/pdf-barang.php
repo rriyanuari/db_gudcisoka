@@ -25,14 +25,6 @@
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
-  <!-- Navbar -->
-  <?php $this->load->view('components/navbar.php'); ?>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <?php $this->load->view('components/sidebar.php'); ?>
-  <!-- /.Main Sidebar Container -->
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -63,10 +55,6 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table class="table tabel-barang table-bordered table-hover">
-                    <div class="d-flex flex-row-reverse">
-                      <a href="<?php echo base_url() ?>barang/print"><button class="btn btn-small btn-warning m-2 mb-3"><i class="fas fa-print"></i></button></a>
-                      <a href="<?php echo base_url() ?>barang/download"><button class="btn btn-small btn-warning m-2 mb-3"><i class="fas fa-download"></i></button></a>
-                    </div>
                     <thead>
                       <tr>
                         <th class="text-center">No</th>
@@ -84,7 +72,7 @@
                       <tr>
                         <td width="5%" class="text-center align-middle"><?= $no_jenisBarang ?></td>
                         <td width="75%" class="align-middle">
-                          <div class="card card-secondary collapsed-card">
+                          <div class="card card-secondary">
                             <!-- card header -->
                             <div class="card-header border-transparent">
                               <h3 class="card-title"><?= $jenisBarangSatuan['nama_jenisBarang']; ?></h3>
@@ -104,7 +92,6 @@
                                   <th class="text-center">Tgl Masuk</th>
                                   <th class="text-center">Tgl Kadaluarsa</th>
                                   <th class="text-center">Qty</th>
-                                  <th class="text-center">Action</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -126,16 +113,6 @@
                                   <td width="35%" class="text-center"><?= $tgl_masuk ?></td>
                                   <td width="35%" class="text-center"><?= $tgl_kadaluarsa  ?></td>
                                   <td width="7%"  class="text-center"><?= $barangSatuan['qty_barang'] ?></td>
-                                  <td width="20%" class="text-center project-actions">
-                                      <a class="btn btn-info btn-sm" href="<?= site_url('barang/qr/'.$barangSatuan['id_barang']) ?>">
-                                          <i class="fas fa-folder">
-                                          </i>
-                                      </a>
-                                      <a class="btn btn-danger btn-sm" href="<?= site_url('barang/delete/'.$barangSatuan['id_barang']) ?>">
-                                          <i class="fas fa-trash">
-                                          </i>
-                                      </a>
-                                  </td>
                                 </tr>
                               <?php endforeach ?>
                               </tbody>
@@ -166,16 +143,6 @@
     <!-- /.content -->  
   </div>
   <!-- /.content-wrapper -->
-
-  <!-- Footer -->
-  <?php $this->load->view('components/footer.php'); ?>
-  <!-- /.Footer -->
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -185,29 +152,14 @@
 <script src="<?php echo base_url() ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url() ?>/assets/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url() ?>/assets/dist/js/demo.js"></script>
 <!-- DataTables -->
 <script src="<?php echo base_url() ?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<!-- Select2 -->
-<script src="<?php echo base_url() ?>/assets/plugins/select2/js/select2.full.min.js"></script>
-<!-- jquery-validation -->
-<script src="<?php echo base_url() ?>/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
-<script src="<?php echo base_url() ?>/assets/plugins/jquery-validation/additional-methods.min.js"></script>
 <!-- page script -->
 <script>
-  $(function () {
-    $(".tabel-barang").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-  $('.select2bs4').select2({
-      theme: 'bootstrap4',
-    })
-  });
+  window.print();
 </script>
 
 </body>

@@ -10,6 +10,13 @@ class Model_jenisBarang extends CI_Model{
     return $query->result_array();
   }
 
+  public function get_sum_jenisBarang($jenisBarang){
+    $this->db->select_sum('qty_barang');
+    $this->db->where('id_jenisBarang', $jenisBarang);
+    $query = $this->db->get('tbl_barang');
+    return $query->row_array();
+  }
+
   public function set_jenisBarang(){
     $data = array( 
       'nama_jenisBarang'    => $this->input->post('nama_jenisBarang'),

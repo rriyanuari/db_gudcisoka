@@ -13,6 +13,8 @@ $route['form-transaksi/barangMasuk']    = 'transaksi/barangMasuk';
 $route['history']                       = 'history';
 
 $route['barang']                        = 'barang';
+$route['barang/print']                  = 'barang/print';
+$route['barang/download']               = 'barang/download';
 $route['barang/qr/(:any)']              = 'barang/qrcodeGenerate/$1';
 $route['barang/delete/(:any)']          = 'barang/delete/$1';
 
