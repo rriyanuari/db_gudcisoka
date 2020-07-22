@@ -5,7 +5,6 @@ class Model_history extends CI_Model{
     $this->load->database();
   }
 
-  
   public function get_history(){
     $this->db->select('*');
     $this->db->from('tbl_history');
