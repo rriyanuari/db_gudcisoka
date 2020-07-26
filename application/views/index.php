@@ -80,14 +80,14 @@
   <!-- page script -->
   <script>
     $(function () {
-      $("#example1").DataTable({
+      $(".table").DataTable({
         "responsive": true,
         "autoWidth": false,
       });
       $('.select2bs4').select2({
         theme: 'bootstrap4',
       });
-      $('#reservationdate').datetimepicker({
+      $('.date_formTransaksi').datetimepicker({
         format: 'YYYY-MM-DD',
       });
     });

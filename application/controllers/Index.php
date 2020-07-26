@@ -37,7 +37,6 @@ class Index extends CI_Controller {
     $this->form_validation->set_rules('nama_jenisBarang', 'Nama Barang', 'required');
     $this->form_validation->set_rules('tag_jenisBarang', 'Tag Barang', 'required');
     $this->form_validation->set_rules('satuan_jenisBarang', 'Satuan Barang', 'required');
-    $this->form_validation->set_rules('nominal_jenisBarang', 'Nominal', 'required');
 
     if ($this->form_validation->run() == FALSE)
     {

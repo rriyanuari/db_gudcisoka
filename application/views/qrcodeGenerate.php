@@ -19,26 +19,28 @@
         imgWidth: 36,
         imgHeight: 18
       });  
-    };
+    };.
+
+    
   </script>
 
   <style>
     .container{
-      width: 85%;
-      padding: 20px;
+      width: 95%;
+      padding: 15px;
       margin: 50px auto;
       border: 2px solid;
     }
-    .col{
+    .qr{
       border: 1px solid;
     }
   </style>
 </head>
 <body>
-  <div class="container row">
+  <div class="container row justify-content-center">
     <?php
       for($x = 1; $x <= $barangSatuan['qty_barang']; $x++): ?>
-        <div class="col m-1 p-1 text-center">
+        <div class="qr col-md-2-sm-2 m-1 p-1 text-center">
           <span style="font-size:12px"><?= $x ?> | 10/20</span>
           <div id="output<?=$x?>"></div> 
         </div>

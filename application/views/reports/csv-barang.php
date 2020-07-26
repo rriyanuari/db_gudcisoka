@@ -39,7 +39,7 @@
               $total_qty += $barangSatuan['qty_barang'];
               $no++;
               $split_kadaluarsa = explode('-', $barangSatuan['tgl_kadaluarsaBarang']);
-              $split_masuk   	  = explode('-', $barangSatuan['tgl_masukBarang']);
+              $split_masuk   	  = explode('-', $barangSatuan['tgl_historyBarang']);
               $tgl_kadaluarsa = $split_kadaluarsa[2] . ' - ' . $split_kadaluarsa[1] . ' - ' . $split_kadaluarsa[0];
               $tgl_masuk = $split_masuk[2] . ' - ' . $split_masuk[1] . ' - ' . $split_masuk[0];
           ?>

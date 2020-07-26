@@ -52,9 +52,9 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label>Tanggal kadaluarsa:</label>
-                      <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input type="text" name="tgl_kadaluarsa" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                      <div class="input-group date date_formTransaksi" id="reservationdate1" data-target-input="nearest">
+                        <input type="text" name="tgl_kadaluarsa" class="form-control datetimepicker-input" data-target="#reservationdate1"/>
+                        <div class="input-group-append" data-target="#reservationdate1" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                       </div>
@@ -108,9 +108,9 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label>Date:</label>
-                      <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                      <div class="input-group date date_formTransaksi" id="reservationdate2" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate2"/>
+                        <div class="input-group-append" data-target="#reservationdate2" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                       </div>
@@ -164,9 +164,9 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label>Date:</label>
-                      <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate"/>
-                        <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                      <div class="input-group date date_formTransaksi" id="reservationdate3" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate3"/>
+                        <div class="input-group-append" data-target="#reservationdate3" data-toggle="datetimepicker">
                           <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                         </div>
                       </div>
