@@ -20,7 +20,12 @@ class Model_barang extends CI_Model{
   }
 
   public function get_barang_id_jenisBarang($id_jenisBarang = FALSE){
-    $query = $this->db->get_where('page_barang', array('id_jenisBarang' => $id_jenisBarang));
+    $this->db->select('*');
+    $this->db->from('tbl_barang');
+    $this->db->join('tbl_jenisBarang', 'tbl_barang.id_jenisBarang = tbl_jenisBarang.id_jenisBarang');
+    $this->db->join('tbl_history', 'tbl_barang.id_barang = tbl_history.id_barang');
+    $this->db->where('tbl_barang.id_jenisBarang', $id_jenisBarang);
+    $query = $this->db->get();
     return $query->result_array();
   }
 

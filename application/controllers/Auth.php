@@ -40,7 +40,7 @@ class Auth extends CI_Controller {
 
         $this->session->set_userdata($data_session);
 
-        redirect(base_url("jenis-barang"));
+        redirect(base_url());
 
       }else{
         echo "Username dan password salah !";

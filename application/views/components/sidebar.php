@@ -13,8 +13,8 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item">
-          <a href="#" class="nav-link">
+        <li class="nav-item active">
+          <a href="<?= base_url() ?>" class="nav-link <?= ($file == 'dashboard') ? 'active' : '' ?>"">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
@@ -22,7 +22,7 @@
           </a>
         </li> 
         <li class="nav-item">
-          <a href="<?= base_url() ?>jenis-barang" class="nav-link">
+          <a href="<?= base_url() ?>jenis-barang" class="nav-link <?= ($file == 'jenisBarang') ? 'active' : '' ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Jenis Barang
@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url() ?>form-transaksi" class="nav-link">
+          <a href="<?= base_url() ?>form-transaksi" class="nav-link <?= ($file == 'formTransaksi') ? 'active' : '' ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Form Transaksi
@@ -38,7 +38,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url() ?>barang" class="nav-link">
+          <a href="<?= base_url() ?>barang" class="nav-link <?= ($file == 'barang') ? 'active' : '' ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Barang
@@ -46,7 +46,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url() ?>history" class="nav-link">
+          <a href="<?= base_url() ?>history" class="nav-link <?= ($file == 'history') ? 'active' : '' ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               History
