@@ -10,7 +10,8 @@ $route['jenis-barang']                  = 'index/jenisBarang';
 $route['jenis-barang/delete/(:any)']    = 'index/jenisBarang_delete/$1';
 
 $route['form-transaksi']                = 'index/transaksi';
-$route['form-transaksi/barangMasuk']    = 'index/transaksi_barangMasuk';
+$route['transaksi-masuk']               = 'index/transaksi_masuk';
+$route['transaksi-masuk/proses']        = 'index/transaksi_masuk_proses';
 
 $route['history']                       = 'index/history';
 

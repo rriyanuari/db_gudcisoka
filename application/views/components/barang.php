@@ -70,7 +70,7 @@
                                 <th class="text-center">Tgl Masuk</th>
                                 <th class="text-center">Tgl Kadaluarsa</th>
                                 <th class="text-center">Qty</th>
-                                <th class="text-center">Action</th>
+                                <th class="text-center <?= ($user['status'] == '2') ? 'd-none' : ''; ?>">Action</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -92,7 +92,7 @@
                                 <td width="35%" class="text-center"><?= $tgl_masuk ?></td>
                                 <td width="35%" class="text-center"><?= $tgl_kadaluarsa  ?></td>
                                 <td width="7%"  class="text-center"><?= $barangSatuan['qty_barang'] ?></td>
-                                <td width="20%" class="text-center project-actions">
+                                <td width="20%" class="text-center project-actions <?= ($user['status'] == '2') ? 'd-none' : ''; ?>">
                                     <a class="btn btn-info btn-sm" href="<?= site_url('barang/qr/'.$barangSatuan['id_barang']) ?>">
                                         <i class="fas fa-folder">
                                         </i>

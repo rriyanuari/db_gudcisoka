@@ -31,6 +31,10 @@ class Index extends CI_Controller {
     $this->load->helper('form');
     $this->load->library('form_validation');
 
+    $user = $this->session->userdata('username');
+    $query = $this->db->get_where('tbl_user', array('username' => $user));
+    
+    $data['user']          = $query->row_array(); 
     $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
     $data['file']          = 'jenisBarang';
     
@@ -59,18 +63,30 @@ class Index extends CI_Controller {
 // ===== /.JENIS BARANG
 
 // ===== TRANSAKSI
-  public function transaksi()
+  // public function transaksi()
+	// {
+  //   $this->load->helper('form');
+  //   $this->load->library('form_validation');
+
+  //   $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
+  //   $data['file']          = 'formTransaksi';
+
+  //   $this->load->view('index', $data);
+  // }
+
+  public function transaksi_masuk()
 	{
-    $this->load->helper('form');
+
     $this->load->library('form_validation');
 
     $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
-    $data['file']          = 'formTransaksi';
+    $data['file']          = 'transMasuk';
 
     $this->load->view('index', $data);
   }
 
-  public function transaksi_barangMasuk()
+
+  public function transaksi_masuk_proses()
   {
     $this->load->helper('form');
     $this->load->library('form_validation');
@@ -82,7 +98,7 @@ class Index extends CI_Controller {
     if ($this->form_validation->run() == FALSE)
     {
       $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
-      $data['file']          = 'formTransaksi';
+      $data['file']          = 'transMasuk';
       $this->load->view('index', $data);
     }
     else
@@ -94,7 +110,7 @@ class Index extends CI_Controller {
       $data['barang']     = $this->model_barang->get_barang_last();  
 
       $this->model_history->set_history($data);
-      redirect('form-transaksi');
+      redirect(base_url());
     }
 
   }
@@ -113,6 +129,10 @@ class Index extends CI_Controller {
 // ===== BARANG
   public function barang()
 	{
+    $user = $this->session->userdata('username');
+    $query = $this->db->get_where('tbl_user', array('username' => $user));
+    
+    $data['user']          = $query->row_array(); 
     $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
     $data['file']          = 'barang';
 

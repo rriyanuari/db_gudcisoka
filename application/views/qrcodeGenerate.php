@@ -19,7 +19,7 @@
         imgWidth: 36,
         imgHeight: 18
       });  
-    };.
+    };
 
     
   </script>
@@ -37,7 +37,7 @@
   </style>
 </head>
 <body>
-  <div class="container row justify-content-center">
+  <div class="container row justify-content-left">
     <?php
       for($x = 1; $x <= $barangSatuan['qty_barang']; $x++): ?>
         <div class="qr col-md-2-sm-2 m-1 p-1 text-center">
@@ -49,3 +49,6 @@
   </div class="row">
 </body>
 </html>
+<script>
+  window.print();
+</script>

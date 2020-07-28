@@ -17,7 +17,7 @@
   <section class="content">
     <div class="container-fluid">
       <!-- Form Jenis Barang -->
-      <div class="row">
+      <div class="row <?= ($user['status'] == '2') ? 'd-none' : ''; ?>">
         <div class="col-md-12">
           <div class="card card-primary collapsed-card">
             <!-- card header -->
@@ -92,7 +92,7 @@
                     <th class="text-center">Jenis</th>
                     <th class="text-center">Satuan</th>
                     <th class="text-center">Nominal</th>
-                    <th class="text-center">Action</th>
+                    <th class="text-center <?= ($user['status'] == '2') ? 'd-none' : ''; ?>">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -113,7 +113,7 @@
                     <td width="15%" class="text-center"><?= $jenisBarangSatuan['tag_jenisBarang'] ?></td>
                     <td width="15%" class="text-center"><?= $jenisBarangSatuan['satuan_jenisBarang'] ?></td>
                     <td width="15%" class="text-right"><?= $jenisBarangSatuan['nominal_jenisBarang']." ".$satuanNominal ?></td>
-                    <td width="10%" class="project-actions text-center">
+                    <td width="10%" class="project-actions text-center <?= ($user['status'] == '2') ? 'd-none' : ''; ?>">
                         <!-- <a class="btn btn-info btn-sm" href="#">
                             <i class="fas fa-pencil-alt">
                             </i>

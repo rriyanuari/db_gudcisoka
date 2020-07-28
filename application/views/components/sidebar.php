@@ -30,14 +30,6 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url() ?>form-transaksi" class="nav-link <?= ($file == 'formTransaksi') ? 'active' : '' ?>">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Form Transaksi
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
           <a href="<?= base_url() ?>barang" class="nav-link <?= ($file == 'barang') ? 'active' : '' ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
@@ -52,6 +44,35 @@
               History
             </p>
           </a>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link <?= ($file == 'formTransaksi') ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Form Transaksi
+            </p>
+            <i class="right fas fa-angle-left"></i>
+          </a>
+          <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= base_url() ?>transaksi-masuk" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Barang Masuk</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url() ?>transaksi-keluar" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Barang Keluar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url() ?>transaksi-return" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Barang Return</p>
+                </a>
+              </li>
+            </ul>
         </li>
       </ul>
     </nav>
