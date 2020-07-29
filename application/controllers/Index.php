@@ -13,6 +13,7 @@ class Index extends CI_Controller {
     $this->load->model('model_jenisBarang');
     $this->load->model('model_barang');
     $this->load->model('model_history');
+    $this->load->model('model_scanner');
   }
 
 // ===== DASHBOARD
@@ -113,6 +114,20 @@ class Index extends CI_Controller {
       redirect(base_url());
     }
 
+  }
+
+  public function transaksi_keluar()
+	{
+    // $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
+    // $data['file']          = 'transMasuk';
+
+    $this->load->view('scanner/index');
+  }
+
+  public function transaksi_keluar_scan()
+	{
+    $data =$this->model_scanner->get_barang_scan();
+    echo json_encode($data);
   }
 // ===== /.TRANSAKSI
 

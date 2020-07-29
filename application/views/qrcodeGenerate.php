@@ -10,7 +10,7 @@
     function generate(x){
       $(`#output${x}`).qrcode({
         render: "canvas", 
-        text: `<?= $id ?>.${x}`, 
+        text: `${x}-<?= $id ?>`, 
         width: 100, 
         height: 100,
         background: "#ffffff", 
