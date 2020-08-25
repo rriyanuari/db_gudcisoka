@@ -40,6 +40,11 @@ class Model_barang extends CI_Model{
     return $query->row_array();
   }
 
+  public function get_count_barang(){
+    $query = $this->db->count_all('tbl_barang');
+    return $query;
+  }
+
   public function set_barang(){
     $data = array( 
       'id_jenisBarang'        => $this->input->post('namaBarang'),

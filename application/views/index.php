@@ -75,20 +75,66 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <script src="<?php echo base_url() ?>/assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
   <!-- jquery-validation -->
-  <script src="<?php echo base_url() ?>/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
-  <script src="<?php echo base_url() ?>/assets/plugins/jquery-validation/additional-methods.min.js"></script>
   <!-- page script -->
   <script>
     $(function () {
       $(".table").DataTable({
         "responsive": true,
-        "autoWidth": false,
+        "autoWidth": true,
       });
       $('.select2bs4').select2({
         theme: 'bootstrap4',
       });
       $('.date_formTransaksi').datetimepicker({
         format: 'YYYY-MM-DD',
+      });
+
+      // proses keluar
+      <?php
+        if($file == 'transKeluar'){  ?>
+          $("#tmb-keluar").on("click", function(){
+          event.preventDefault();
+          var keterangan          = $("#keterangan").val();
+          if(keterangan == ""){
+            $("#keterangan").focus();
+            alert('Form keterangan harap di isi');
+          }else{
+            window.location.href = `<?= base_url() ?>transaksi-keluar/proses/execute/<?=$id_transaksi?>?keterangan=${keterangan}`;
+          }
+        });
+      <?php } ?>
+
+      //Save product
+      $('#tmb-add-jenisBarang').on('click',function(){
+        var nama_jenisBarang    = $("#nama_jenisBarang").val();
+        var satuan              = $('#select2-satuan_jenisBarang-container').html()
+        var nominal             = $("#nominal_jenisBarang").val();
+        
+        if(nama_jenisBarang == ""){
+          $("#nama_jenisBarang").focus();
+          alert('Nama jenis barang harap di isi');
+        }else if(satuan == "-"){
+          $("#select2-satuan_jenisBarang-container").focus();
+          alert('Satuan barang harap di isi');
+        }else if(nominal == ""){
+          $("#nominal_jenisBarang").focus();
+          alert('Nominal barang harap di isi');
+        }else{
+          $.ajax({
+              type : "GET",
+              url  : "<?php echo site_url('jenis-barang/create')?>",
+              dataType : "JSON",
+              data : {
+                nama_jenisBarang  : nama_jenisBarang ,
+                satuan            : satuan, 
+                nominal           : nominal
+              },
+              success: function(data){
+                  alert('jenis barang sudah ditambahkan, silahkan refresh');
+              }
+          });
+          return false;
+        }
       });
     });
   </script>

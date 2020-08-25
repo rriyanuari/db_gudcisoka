@@ -9,7 +9,7 @@
   }
 </style>
 
-<h3 class="card-title">Database Barang Gudang Cisoka</h3>
+<h3 class="card-title">Database Barang Gudang Cisoka - Barang</h3>
   <table id="cetak-tabel-pud" class="table table-striped table-no-bordered table-hover" cellspacing="0" border="1">
     <thead>
       <tr>

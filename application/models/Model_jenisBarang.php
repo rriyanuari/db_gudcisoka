@@ -17,15 +17,20 @@ class Model_jenisBarang extends CI_Model{
     return $query->row_array();
   }
 
-  public function set_jenisBarang(){
-    $data = array( 
-      'nama_jenisBarang'    => $this->input->post('nama_jenisBarang'),
-      'tag_jenisBarang'     => $this->input->post('tag_jenisBarang'),
-      'satuan_jenisBarang'  => $this->input->post('satuan_jenisBarang'),
-      'nominal_jenisBarang' => $this->input->post('nominal_jenisBarang')
-    );
+  public function get_count_jenisBarang(){
+    $query = $this->db->count_all('tbl_jenisBarang');
+    return $query;
+  }
 
-    return $this->db->insert('tbl_jenisBarang', $data);
+  public function set_jenisBarang(){
+    $data = array(
+      'nama_jenisBarang'    => $this->input->get('nama_jenisBarang'), 
+      'satuan_jenisBarang'  => $this->input->get('satuan'), 
+      'nominal_jenisBarang' => $this->input->get('nominal'), 
+      );
+
+    $result = $this->db->insert('tbl_jenisBarang',$data);
+    return $result;
   }
 
   public function delete_jenisBarang($id){

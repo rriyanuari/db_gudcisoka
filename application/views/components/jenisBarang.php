@@ -32,25 +32,14 @@
             <!-- /.card-header -->
             <!-- card body -->
             <div class="card-body">
-              <?= validation_errors() ?>
-              <?= form_open('jenis-barang'); ?>
-              <form role="form" id="quickForm" style="width:100%;">
                 <div class="row">
                   <div class="form-group col-md-12">
                     <label for="nama_jenisBarang">Nama Barang</label>
                     <input type="text" name="nama_jenisBarang" class="form-control" id="nama_jenisBarang" placeholder="Isi Nama Barang">
                   </div>
                   <div class="form-group col-md-6">
-                    <label>Jenis</label>
-                    <select name="tag_jenisBarang" class="form-control select2bs4" style="width:100%;">
-                      <option value="" selected="selected">-</option>
-                      <option value="tyfo">Tyfo</option>
-                      <option value="epoxy">Epoxy</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-6">
                     <label>Satuan</label>
-                    <select name="satuan_jenisBarang" class="form-control select2bs4" style="width:100%;">
+                    <select name="satuan_jenisBarang" id="satuan_jenisBarang" class="form-control select2bs4" style="width:100%;">
                       <option value="">-</option>
                       <option value="roll">Roll</option>
                       <option value="pail">Pail</option>
@@ -58,14 +47,12 @@
                       <option value="bag">Bag</option>
                     </select>
                   </div>
-                  <div class="form-group col-md-12">
+                  <div class="form-group col-md-6">
                     <label for="nominal_jenisBarang">Nominal Barang</label>
                     <input type="text" name="nominal_jenisBarang" class="form-control" id="nominal_jenisBarang" placeholder="Isi Nominal Barang">
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
-              <?= form_close(); ?>
+                <button type="submit" id="tmb-add-jenisBarang" class="btn btn-primary">Submit</button>
             </div>
             <!-- /.card-body -->
             <!-- /.card-footer -->
@@ -85,11 +72,15 @@
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-hover">
+                <div class="d-flex flex-row-reverse">
+                  <a href="<?php echo base_url() ?>jenis-barang/print"><button class="btn btn-small btn-warning m-2 mb-3"><i class="fas fa-print"></i></button></a>
+                  <a href="<?php echo base_url() ?>jenis-barang/download"><button class="btn btn-small btn-warning m-2 mb-3"><i class="fas fa-download"></i></button></a>
+                </div>
+
                 <thead>
                   <tr>
                     <th class="text-center">No</th>
                     <th class="text-center">Nama Barang/Material</th>
-                    <th class="text-center">Jenis</th>
                     <th class="text-center">Satuan</th>
                     <th class="text-center">Nominal</th>
                     <th class="text-center <?= ($user['status'] == '2') ? 'd-none' : ''; ?>">Action</th>
@@ -110,7 +101,6 @@
                   <tr>
                     <td width="5%" class="text-center"><?= $no ?></td>
                     <td width="40%"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></td>
-                    <td width="15%" class="text-center"><?= $jenisBarangSatuan['tag_jenisBarang'] ?></td>
                     <td width="15%" class="text-center"><?= $jenisBarangSatuan['satuan_jenisBarang'] ?></td>
                     <td width="15%" class="text-right"><?= $jenisBarangSatuan['nominal_jenisBarang']." ".$satuanNominal ?></td>
                     <td width="10%" class="project-actions text-center <?= ($user['status'] == '2') ? 'd-none' : ''; ?>">

@@ -41,11 +41,8 @@
                   <tbody>
                   <?php
                     $no_jenisBarang = 0;
-                    $total_qty_3  = 0;
-                    $total_qty_2 = 0;
                     foreach ($jenisBarang as $jenisBarangSatuan):
                       $no_jenisBarang++;
-                      $total_qty_3  += $total_qty_2;
                     ?>
                     <tr>
                       <td width="5%" class="text-center align-middle"><?= $no_jenisBarang ?></td>
@@ -118,7 +115,6 @@
                   <?php endforeach ?>
                   </tbody>
                 </table>
-                <span><?=$total_qty_3?></span>
               </div>
               <!-- /.card-body -->
             </div>

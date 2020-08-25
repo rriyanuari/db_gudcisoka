@@ -15,7 +15,6 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item active">
           <a href="<?= base_url() ?>" class="nav-link <?= ($file == 'dashboard') ? 'active' : '' ?>"">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
             </p>
@@ -23,7 +22,6 @@
         </li> 
         <li class="nav-item">
           <a href="<?= base_url() ?>jenis-barang" class="nav-link <?= ($file == 'jenisBarang') ? 'active' : '' ?>">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Jenis Barang
             </p>
@@ -31,7 +29,6 @@
         </li>
         <li class="nav-item">
           <a href="<?= base_url() ?>barang" class="nav-link <?= ($file == 'barang') ? 'active' : '' ?>">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Barang
             </p>
@@ -39,15 +36,13 @@
         </li>
         <li class="nav-item">
           <a href="<?= base_url() ?>history" class="nav-link <?= ($file == 'history') ? 'active' : '' ?>">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               History
             </p>
           </a>
         </li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link <?= ($file == 'formTransaksi') ? 'active' : '' ?>">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+        <li class="nav-item has-treeview <?= ($file == 'transMasuk' || $file == 'transKeluar' || $file == 'transReturn') ? 'menu-open' : '' ?>">
+          <a href="#" class="nav-link <?= ($file == 'transMasuk' || $file == 'transKeluar' || $file == 'transReturn') ? 'active' : '' ?>">
             <p>
               Form Transaksi
             </p>
@@ -55,13 +50,13 @@
           </a>
           <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= base_url() ?>transaksi-masuk" class="nav-link">
+                <a href="<?= base_url() ?>transaksi-masuk" class="nav-link <?= ($file == 'transMasuk') ? 'active' : '' ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Masuk</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url() ?>transaksi-keluar" class="nav-link">
+                <a href="<?= base_url() ?>transaksi-keluar" class="nav-link <?= ($file == 'transKeluar') ? 'active' : '' ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Barang Keluar</p>
                 </a>

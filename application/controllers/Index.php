@@ -19,8 +19,12 @@ class Index extends CI_Controller {
 // ===== DASHBOARD
   public function index()
   {
-    // $data['history']  = $this->model_history->get_history();
-    $data['file']     ='dashboard';
+    $data['jenis_barang']  = $this->model_jenisBarang->get_count_jenisBarang();
+    $data['barang']        = $this->model_barang->get_count_barang();
+    $data['history']       = $this->model_history->get_count_history();
+    $data['file']          ='dashboard';
+
+    // var_dump($data);
 
     $this->load->view('index', $data);
   }
@@ -30,7 +34,6 @@ class Index extends CI_Controller {
 	public function jenisBarang()
 	{
     $this->load->helper('form');
-    $this->load->library('form_validation');
 
     $user = $this->session->userdata('username');
     $query = $this->db->get_where('tbl_user', array('username' => $user));
@@ -38,20 +41,28 @@ class Index extends CI_Controller {
     $data['user']          = $query->row_array(); 
     $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
     $data['file']          = 'jenisBarang';
-    
-    $this->form_validation->set_rules('nama_jenisBarang', 'Nama Barang', 'required');
-    $this->form_validation->set_rules('tag_jenisBarang', 'Tag Barang', 'required');
-    $this->form_validation->set_rules('satuan_jenisBarang', 'Satuan Barang', 'required');
 
-    if ($this->form_validation->run() == FALSE)
-    {
-      $this->load->view('index', $data);
-    }
-    else
-    {
-      $this->model_jenisBarang->set_jenisBarang();
-      redirect('jenis-barang',$data);
-    }
+    $this->load->view('index', $data);
+  }
+
+  public function jenisBarang_download()
+	{
+    $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
+
+    $this->load->view('reports/csv-jenisBarang', $data);
+  }
+
+  public function jenisBarang_print()
+	{
+    $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
+
+    $this->load->view('reports/pdf-jenisBarang', $data);
+  }
+
+	public function jenisBarang_create()
+	{
+    $data = $this->model_jenisBarang->set_jenisBarang();
+    echo json_encode($data);
   }
 
   public function jenisBarang_delete($id)
@@ -64,16 +75,6 @@ class Index extends CI_Controller {
 // ===== /.JENIS BARANG
 
 // ===== TRANSAKSI
-  // public function transaksi()
-	// {
-  //   $this->load->helper('form');
-  //   $this->load->library('form_validation');
-
-  //   $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
-  //   $data['file']          = 'formTransaksi';
-
-  //   $this->load->view('index', $data);
-  // }
 
   public function transaksi_masuk()
 	{
@@ -118,17 +119,47 @@ class Index extends CI_Controller {
 
   public function transaksi_keluar()
 	{
-    // $data['jenisBarang']   = $this->model_jenisBarang->get_jenisBarang();
-    // $data['file']          = 'transMasuk';
-
-    $this->load->view('scanner/index');
+    $data['id_transaksi'] = $this->model_scanner->get_id_transaksi();
+    $this->load->view('scanner/index', $data);
   }
 
   public function transaksi_keluar_scan()
 	{
-    $data =$this->model_scanner->get_barang_scan();
+    if(isset($_GET['scan'])){
+      $data =$this->model_scanner->get_barang_scan();
+      echo $data;
+    };
+  } 
+
+  public function transaksi_keluar_scan2()
+	{
+    $data = $this->model_scanner->list_barang_scanned();
     echo json_encode($data);
   }
+
+  public function transaksi_keluar_proses($id_transaksi)
+	{
+    $data['id_transaksi'] = $id_transaksi; 
+    $data['barang']       = $this->model_scanner->list_barang_scanned2($id_transaksi);
+    $data['file']         = 'transKeluar';
+
+    $this->load->view('index', $data);
+  }
+
+  public function transaksi_keluar_proses_execute($id_transaksi)
+	{
+    $keterangan = $_GET['keterangan'];
+    $data['id_transaksi'] = $id_transaksi;
+    if (!$this->model_scanner->proses_execute_barang_scanned2($id_transaksi, $keterangan)){
+      ?><script>alert('gagal')</script> <?php
+      die();
+    };
+    ?><script>alert('barang berhasil keluar')</script> <?php
+    
+    redirect(site_url('history'));
+  }
+
+
 // ===== /.TRANSAKSI
 
 // ===== HISTORY
@@ -139,6 +170,21 @@ class Index extends CI_Controller {
 
     $this->load->view('index', $data);
   }
+
+  public function history_download()
+	{
+    $data['history']   = $this->model_history->get_history();
+
+    $this->load->view('reports/csv-history', $data);
+  }
+
+  public function history_print()
+	{
+    $data['history']   = $this->model_history->get_history();
+
+    $this->load->view('reports/pdf-history', $data);
+  }
+
 // ===== /.HISTORY
 
 // ===== BARANG
@@ -161,6 +207,7 @@ class Index extends CI_Controller {
 
     $this->load->view('reports/csv-barang', $data);
   }
+
   public function barang_print()
 	{
     // $data['barang']        = $this->model_barang->get_barang();

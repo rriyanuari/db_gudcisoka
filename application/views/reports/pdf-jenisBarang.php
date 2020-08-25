@@ -55,10 +55,6 @@
                   <!-- /.card-header -->
                   <div class="card-body">
                     <table id="example1" class="table table-bordered table-hover">
-                      <div class="d-flex flex-row-reverse">
-                        <a href="<?php echo base_url() ?>jenis-barang/print"><button class="btn btn-small btn-warning m-2 mb-3"><i class="fas fa-print"></i></button></a>
-                        <a href="<?php echo base_url() ?>jenis-barang/download"><button class="btn btn-small btn-warning m-2 mb-3"><i class="fas fa-download"></i></button></a>
-                      </div>
 
                       <thead>
                         <tr>
@@ -66,7 +62,6 @@
                           <th class="text-center">Nama Barang/Material</th>
                           <th class="text-center">Satuan</th>
                           <th class="text-center">Nominal</th>
-                          <th class="text-center <?= ($user['status'] == '2') ? 'd-none' : ''; ?>">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -86,16 +81,6 @@
                           <td width="40%"><?= $jenisBarangSatuan['nama_jenisBarang'] ?></td>
                           <td width="15%" class="text-center"><?= $jenisBarangSatuan['satuan_jenisBarang'] ?></td>
                           <td width="15%" class="text-right"><?= $jenisBarangSatuan['nominal_jenisBarang']." ".$satuanNominal ?></td>
-                          <td width="10%" class="project-actions text-center <?= ($user['status'] == '2') ? 'd-none' : ''; ?>">
-                              <!-- <a class="btn btn-info btn-sm" href="#">
-                                  <i class="fas fa-pencil-alt">
-                                  </i>
-                              </a> -->
-                              <a class="btn btn-danger btn-sm" href="<?= site_url('jenis-barang/delete/'.$jenisBarangSatuan['id_jenisBarang']) ?>">
-                                  <i class="fas fa-trash">
-                                  </i>
-                              </a>
-                          </td>
                         </tr>
                       <?php endforeach ?>
                       </tbody>

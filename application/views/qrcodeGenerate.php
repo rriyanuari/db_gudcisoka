@@ -20,8 +20,6 @@
         imgHeight: 18
       });  
     };
-
-    
   </script>
 
   <style>
@@ -39,9 +37,11 @@
 <body>
   <div class="container row justify-content-left">
     <?php
+      $kadaluarsaBarang = explode("-", $barangSatuan['tgl_kadaluarsaBarang']);
+      $kadaluarsaBarang = $kadaluarsaBarang[1] . "/" . $kadaluarsaBarang[2];
       for($x = 1; $x <= $barangSatuan['qty_barang']; $x++): ?>
         <div class="qr col-md-2-sm-2 m-1 p-1 text-center">
-          <span style="font-size:12px"><?= $x ?> | 10/20</span>
+          <span style="font-size:12px"><?= $x . ' | ' . $kadaluarsaBarang ?></span>
           <div id="output<?=$x?>"></div> 
         </div>
         <script>generate(<?=$x?>)</script>

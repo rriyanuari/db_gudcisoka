@@ -32,6 +32,11 @@
           </transition-group>
         </section>
         <div id="autoSave"></div>
+
+        <section class>
+          <h2>Daftar Barang <?=$id_transaksi?></h2>
+          <ul id="show_data"></ul>
+        </section>
       </div>
       <div class="preview-container">
         <video id="preview" style="height: 90%;"></video>
@@ -43,13 +48,15 @@
       $(document).ready(function(){
             function autoSave()  
             {
-            var scan_pic = $('#hasilscan').val();  
+              var scan_pic = $('#hasilscan').val();  
+              var id_transaksi = <?= $id_transaksi ?>;  
               $.ajax({  
                 method:"GET",  
                 url:"<?=base_url()?>transaksi-keluar/scan",
-                dataType:"JSON",  
+                dataType:"text",  
                 data:{
-                  scan: scan_pic
+                  scan: scan_pic,
+                  id_transaksi : id_transaksi, 
                 },  
                 success: function(msg) {  
                   if (msg == 'sukses'){
@@ -57,14 +64,42 @@
                     setInterval(function(){  
                       $('#autoSave').text('');  
                     }, 500);
-                  } else {
-                    $('#autoSave').text("_");
+                  } else if(msg = 'gagal'){
+                    $('#autoSave').text("");
                   }
                 }  
               });         
+            }
+            function autoGetBarang()  
+            {
+              var id_transaksi = <?= $id_transaksi ?>;  
+              $.ajax({  
+                type  : 'ajax',
+                method: 'GET',
+                url   : '<?php echo site_url('transaksi-keluar/scan-get-barang')?>',
+                async : true,
+                dataType : 'json',
+                data:{
+                  id_transaksi : id_transaksi, 
+                },  
+                success : function(data){
+                    var html = '';
+                    var i;
+                    for(i=0; i<data.length; i++){
+                        html += '<li>'+data[i].nama_jenisBarang+'('+data[i].tgl_kadaluarsaBarang+')</li>';
+                    }
+                    if(i > 0){
+                      var link = `<?=base_url()?>transaksi-keluar/proses/${id_transaksi}`
+                      html += `<div><a href="${link}"><button> Submit </button></a></div>`;
+                    }
+                    $('#show_data').html(html);
+                }
+              });         
             }  
+  
         setInterval(function(){   
-          autoSave();   
+          autoSave(); 
+          autoGetBarang();
           }, 500);
         });
     </script>
